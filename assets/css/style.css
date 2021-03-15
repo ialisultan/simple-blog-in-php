@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Body */
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - 243px);
+}
+
+/* Header */
+
+.header {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-buttons {
+  justify-content: center;
+}
+
+.title a {
+  text-decoration: none;
+  color: white;
+}
+
+.title a:hover {
+  color: red;
+}
+
+.button {
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: grey;
+}
+
+/* Content Container */
+
+.posts_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 100%;
+  padding: 40px 80px;
+}
+
+.post {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 15px;
+  padding: 15px 30px;
+  margin: 15px;
+}
+
+.pagination_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  margin: 15px;
+}
+
+.form_wrap {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 7%;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 15px;
+}
+
+input[type="submit"] {
+  background-color: red;
+  color: white;
+}
+
+input[type="submit"]:hover {
+  background-color: grey;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 10px;
+  width: 100%;
+  text-align: center;
+}
+th,
+td {
+  border: 1px solid grey;
+}
+th {
+  padding: 15px;
+  height: 40px;
+}
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Footer */
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: black;
+  color: white;
+}
