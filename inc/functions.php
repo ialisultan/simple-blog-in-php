@@ -26,19 +26,19 @@ function get_posts(int $on_page): array
   return ['total_pages' => $total_pages, 'posts' => $posts];
 }
 
-function get_post($post)
+function get_post(string $post): array
 {
   global $my_db;
   $post = $my_db->fetch("SELECT * FROM posts WHERE slug = ?", [$post]);
   return iterator_to_array($post)[0];
 }
 
-function login_request()
+function login_request(): string
 {
   return $_SESSION['login'] = base64_encode(bin2hex(random_bytes(24)));
 }
 
-function csrf_verify($form_token, $session_token)
+function csrf_verify(string $form_token, string $session_token): bool
 {
   if ($form_token === $session_token) {
     return true;
@@ -46,11 +46,11 @@ function csrf_verify($form_token, $session_token)
   return false;
 }
 
-function verify_user($email, $password)
+function verify_user($email, $password): bool
 {
   global $my_db;
   $user = $my_db->fetch("SELECT * FROM users WHERE email = ?", [$email]);
-  $user = iterator_to_array($user)[0];
+  $user = (iterator_to_array($user))[0];
   if (password_verify($password, $user['hash'])) {
     return true;
   }
@@ -58,26 +58,26 @@ function verify_user($email, $password)
   return false;
 }
 
-function delete_post($id)
+function delete_post(int $id): bool
 {
   global $my_db;
   $stmt = $my_db->execute("DELETE FROM posts WHERE id=? LIMIT 1", [$id]);
   return true;
 }
 
-function edit_request()
+function edit_request(): string
 {
   return $_SESSION['edit'] = base64_encode(bin2hex(random_bytes(24)));
 }
 
-function edit_post($id)
+function edit_post(int $id): array
 {
   global $my_db;
   $result = $my_db->fetch("SELECT * FROM posts WHERE id=? LIMIT 1", [$id]);
   return iterator_to_array($result)[0];
 }
 
-function update_post($title, $content, $id)
+function update_post(string $title, string $content, int $id): bool
 {
   global $my_db;
   $stmt = $my_db->execute("UPDATE posts SET title = ?, slug = ?, content = ? WHERE id=?;", 

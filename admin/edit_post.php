@@ -8,7 +8,6 @@ require_once('../inc/functions.php');
 
 if (!empty($_GET['edit'] && $_SESSION['admin'])) {
     $post = FUNC\edit_post($_GET['edit']);
-    // FUNC\dd($post);
 } else {
     echo "Error! unauthorized access.";
     exit();
