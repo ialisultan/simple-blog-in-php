@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require_once('functions.php');
 
-$on_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$on_page = isset($_GET['page']) ? $_GET['page'] : '1';
 
 $posts_data = FUNC\get_posts($on_page);
 

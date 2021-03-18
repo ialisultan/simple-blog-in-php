@@ -32,7 +32,7 @@ if (!isset($_SESSION['admin'])) {
     echo "You ain't authorized to access this page. Please <a href='login.php'>Login</a>";
     exit();
 } elseif (isset($_SESSION['admin'])) {
-    $pageNow = isset($_GET['page']) ? $_GET['page'] : 1;
+    $pageNow = isset($_GET['page']) ? $_GET['page'] : '1';
     $posts_data = FUNC\get_posts($pageNow);
 
     echo '<table><tr><th>Title</th><th>Published At</th><th>Update</th><th>Delete</th></tr>';
@@ -46,8 +46,8 @@ if (!isset($_SESSION['admin'])) {
 
     echo '<div class="pagination_wrap">';
     echo '<div class="pagination">';
-    if ($posts_data['totalpages'] >= 1) {
-        for ($p = 1; $p <= $posts_data['totalpages']; $p++) {
+    if ($posts_data['total_pages'] >= 1) {
+        for ($p = 1; $p <= $posts_data['total_pages']; $p++) {
             echo "<a class='button' href=\"?page=$p\">$p</a>";
         }
     }

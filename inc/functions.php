@@ -15,7 +15,7 @@ use ROOT\INC\DB\Database;
 $my_db = new Database(HOST, DBNAME);
 $my_db->connect(USER, PASS);
 
-function get_posts(int $on_page): array
+function get_posts(string $on_page): array
 {
   global $my_db;
   define('PER_PAGE', 3);
@@ -58,7 +58,7 @@ function verify_user($email, $password): bool
   return false;
 }
 
-function delete_post(int $id): bool
+function delete_post(string $id): bool
 {
   global $my_db;
   $stmt = $my_db->execute("DELETE FROM posts WHERE id=? LIMIT 1", [$id]);
@@ -77,7 +77,7 @@ function edit_post(int $id): array
   return iterator_to_array($result)[0];
 }
 
-function update_post(string $title, string $content, int $id): bool
+function update_post(string $title, string $content, string $id): bool
 {
   global $my_db;
   $stmt = $my_db->execute("UPDATE posts SET title = ?, slug = ?, content = ? WHERE id=?;", 
